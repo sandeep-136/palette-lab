@@ -4,6 +4,10 @@ A small browser-based color studio for exploring palettes and taking them straig
 
 A project by Sandeep Sagar
 
+[Open Palette Lab](https://palette-lab.onrender.com/)
+
+![Palette Lab desktop preview](docs/preview.png)
+
 ## What it does
 
 - Generates five-color analogous, complementary, and monochrome palettes.
