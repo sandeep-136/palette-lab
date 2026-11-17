@@ -1,1 +1,11 @@
-{"name":"palette-lab","version":"1.0.0","private":true,"type":"module","scripts":{"test":"node --test","build":"node build.mjs","start":"node server.mjs"}}
+{
+  "name": "palette-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "build": "node build.mjs",
+    "start": "node server.mjs"
+  }
+}

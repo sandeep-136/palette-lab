@@ -1,12 +1,152 @@
 <!doctype html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f7f7f2"><meta name="description" content="A small color studio. Generate palettes, lock your favorites, check contrast, and export CSS variables."><title>Palette Lab - A little color goes a long way.</title><link rel="icon" href="./favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="./style.css"></head>
-<body>
-<header><a class="brand" href="./" aria-label="Palette Lab home"><span class="brand-mark">p<span>l</span></span>palette lab<span class="version">/ 001</span></a><div class="header-right"><span class="status-dot"></span><span>A small tool for big ideas</span></div></header>
-<main>
-<section class="intro"><div><p class="eyebrow">YOUR NEXT IDEA STARTS HERE</p><h1>A little color.<br><span>A lot of possibility.</span></h1><p class="subtitle">Find your palette. Make it yours. Ship something good.</p></div><div class="intro-note"><span class="spark">✳</span><p>Made for the<br>beautifully undecided.</p></div></section>
-<section aria-label="Palette editor" class="workspace"><div class="toolbar"><div class="toolbar-left"><span class="tiny-label">COLOR STORY</span><label class="sr-only" for="harmony">Palette harmony</label><select id="harmony"><option value="analogous">Analogous</option><option value="complementary">Complementary</option><option value="monochrome">Monochrome</option></select></div><div class="toolbar-actions"><button class="icon-button" id="undo" disabled aria-label="Undo palette change" title="Undo">↶</button><button id="generate" class="primary">Generate palette <span aria-hidden="true">↗</span></button></div></div><div class="swatches" id="swatches"></div><div class="palette-bottom"><p><span class="keycap">space</span> to explore <span class="separator">/</span> Lock a color to keep it around</p><button id="reset" class="text-button">Back to the original ↺</button></div></section>
-<section class="details-grid"><article class="preview-panel"><div class="section-heading"><h2>In the wild</h2><span class="tiny-label">LIVE PREVIEW</span></div><div class="preview" id="preview"><div class="preview-top"><span class="mini-brand">offgrid®</span><span class="preview-menu">☰</span></div><p class="preview-kicker">LESS SCROLL. MORE SOUL.</p><h3>Take the<br>scenic route.</h3><p class="preview-text">A fresh perspective is closer<br>than you think.</p><button id="preview-action" class="preview-cta">Find your next color ↗</button><div class="orbit" aria-hidden="true"><div></div></div><span class="preview-number">01 / EXPLORE</span></div></article>
-<article class="utility-panel"><div class="section-heading"><h2>The practical bits</h2><span class="tiny-label">READY TO BUILD</span></div><div class="contrast-block"><div class="row"><h3>Contrast check</h3><span class="small-muted">WCAG AA · normal text</span></div><div class="contrast-inputs"><label>Text<select id="foreground" aria-label="Text color"></select></label><span aria-hidden="true">on</span><label>Background<select id="background" aria-label="Background color"></select></label></div><div class="contrast-sample" id="contrast-sample"><span>Aa</span><div><strong id="contrast-ratio"></strong><span id="contrast-result"></span></div></div></div><div class="export-block"><div class="row"><h3>Take it with you</h3><span class="small-muted">CSS variables</span></div><pre id="css-preview"></pre><div class="export-actions"><button class="dark-button" id="copy-css">Copy CSS <span aria-hidden="true">⧉</span></button><button id="download" class="outline-button">Download .css ↓</button></div></div></article></section>
-<footer><span>A project by Sandeep Sagar</span><span>NO SIGN-UP. JUST COLOR.<span class="footer-dot">●</span></span></footer>
-</main><div id="toast" role="status" aria-live="polite"></div><script type="module" src="./app.js"></script>
-</body></html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f7f2" />
+    <meta
+      name="description"
+      content="A small color studio. Generate palettes, lock your favorites, check contrast, and export CSS variables."
+    />
+    <title>Palette Lab - A little color goes a long way.</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="./" aria-label="Palette Lab home"
+        ><span class="brand-mark">p<span>l</span></span
+        >palette lab<span class="version">/ 001</span></a
+      >
+      <div class="header-right">
+        <span class="status-dot"></span><span>A small tool for big ideas</span>
+      </div>
+    </header>
+    <main>
+      <section class="intro">
+        <div>
+          <p class="eyebrow">YOUR NEXT IDEA STARTS HERE</p>
+          <h1>A little color.<br /><span>A lot of possibility.</span></h1>
+          <p class="subtitle">
+            Find your palette. Make it yours. Ship something good.
+          </p>
+        </div>
+        <div class="intro-note">
+          <span class="spark">✳</span>
+          <p>Made for the<br />beautifully undecided.</p>
+        </div>
+      </section>
+      <section aria-label="Palette editor" class="workspace">
+        <div class="toolbar">
+          <div class="toolbar-left">
+            <span class="tiny-label">COLOR STORY</span
+            ><label class="sr-only" for="harmony">Palette harmony</label
+            ><select id="harmony">
+              <option value="analogous">Analogous</option>
+              <option value="complementary">Complementary</option>
+              <option value="monochrome">Monochrome</option>
+            </select>
+          </div>
+          <div class="toolbar-actions">
+            <button
+              class="icon-button"
+              id="undo"
+              disabled
+              aria-label="Undo palette change"
+              title="Undo"
+            >
+              ↶</button
+            ><button id="generate" class="primary">
+              Generate palette <span aria-hidden="true">↗</span>
+            </button>
+          </div>
+        </div>
+        <div class="swatches" id="swatches"></div>
+        <div class="palette-bottom">
+          <p>
+            <span class="keycap">space</span> to explore
+            <span class="separator">/</span> Lock a color to keep it around
+          </p>
+          <button id="reset" class="text-button">Back to the original ↺</button>
+        </div>
+      </section>
+      <section class="details-grid">
+        <article class="preview-panel">
+          <div class="section-heading">
+            <h2>In the wild</h2>
+            <span class="tiny-label">LIVE PREVIEW</span>
+          </div>
+          <div class="preview" id="preview">
+            <div class="preview-top">
+              <span class="mini-brand">offgrid®</span
+              ><span class="preview-menu">☰</span>
+            </div>
+            <p class="preview-kicker">LESS SCROLL. MORE SOUL.</p>
+            <h3>Take the<br />scenic route.</h3>
+            <p class="preview-text">
+              A fresh perspective is closer<br />than you think.
+            </p>
+            <button id="preview-action" class="preview-cta">
+              Find your next color ↗
+            </button>
+            <div class="orbit" aria-hidden="true"><div></div></div>
+            <span class="preview-number">01 / EXPLORE</span>
+          </div>
+        </article>
+        <article class="utility-panel">
+          <div class="section-heading">
+            <h2>The practical bits</h2>
+            <span class="tiny-label">READY TO BUILD</span>
+          </div>
+          <div class="contrast-block">
+            <div class="row">
+              <h3>Contrast check</h3>
+              <span class="small-muted">WCAG AA · normal text</span>
+            </div>
+            <div class="contrast-inputs">
+              <label
+                >Text<select
+                  id="foreground"
+                  aria-label="Text color"
+                ></select></label
+              ><span aria-hidden="true">on</span
+              ><label
+                >Background<select
+                  id="background"
+                  aria-label="Background color"
+                ></select
+              ></label>
+            </div>
+            <div class="contrast-sample" id="contrast-sample">
+              <span>Aa</span>
+              <div>
+                <strong id="contrast-ratio"></strong
+                ><span id="contrast-result"></span>
+              </div>
+            </div>
+          </div>
+          <div class="export-block">
+            <div class="row">
+              <h3>Take it with you</h3>
+              <span class="small-muted">CSS variables</span>
+            </div>
+            <pre id="css-preview"></pre>
+            <div class="export-actions">
+              <button class="dark-button" id="copy-css">
+                Copy CSS <span aria-hidden="true">⧉</span></button
+              ><button id="download" class="outline-button">
+                Download .css ↓
+              </button>
+            </div>
+          </div>
+        </article>
+      </section>
+      <footer>
+        <span>A project by Sandeep Sagar</span
+        ><span>NO SIGN-UP. JUST COLOR.<span class="footer-dot">●</span></span>
+      </footer>
+    </main>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
